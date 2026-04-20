@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador de Edad</title>
+    <link rel="stylesheet" href="css/style6.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculador de Edad</h1>
+        
+        <form id="formulario" name="formulario">
+            
+            <div class="form-group">
+                <label for="anioNacimiento">Año de Nacimiento:</label>
+                <!-- input para el año de nacimiento -->
+                <input type="text" id="anioNacimiento" name="anioNacimiento" placeholder="Ej: 1990">
+            </div>
+            
+            <div class="botones">
+                <!-- boton para calcular edad -->
+                <button type="button" class="btn btn-calcular" onclick="calcular(document.formulario)">Calcular</button>
+                <button type="button" class="btn btn-limpiar" onclick="limpiar(document.formulario)">Limpiar</button>
+            </div>
+        </form>
+        
+        <!-- seccion donde se muestra la edad calculada -->
+        <section id="resultados" class="resultados">
+            <h2>Resultado</h2>
+            
+            <div class="resultado-item">
+                <label>Año Actual:</label>
+                <!-- span para mostrar el año actual -->
+                <span id="anioActualMostrado">2026</span>
+            </div>
+            
+            <div class="resultado-item">
+                <label>Edad:</label>
+                <!-- span para mostrar la edad calculada -->
+                <span id="edadMostrada">0 años</span>
+            </div>
+        </section>
+    </div>
+    
+    <script src="JS/Ejercicio6.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador de Ganancia Bancaria</title>
+    <link rel="stylesheet" href="css/style1.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculador de Ganancia Bancaria 2% Mensual</h1>
+        
+        <!-- formulario con atributo name para pasarlo a js -->
+        <form id="formulario" name="formulario">
+            <!-- campo del capital inicial -->
+            <div class="form-group">
+                <label for="capitalInicial">Capital Inicial:</label>
+                <!-- input texto para validar en js -->
+                <input type="text" id="capitalInicial" name="capitalInicial" placeholder="Ingrese el capital inicial">
+            </div>
+            
+            <!-- botones -->
+            <div class="botones">
+                <!-- boton para calcular -->
+                <button type="button" class="btn btn-calcular" onclick="calcular(document.formulario)">Calcular</button>
+                <!-- boton para limpiar -->
+                <button type="button" class="btn btn-limpiar" onclick="limpiar(document.formulario)">Limpiar</button>
+            </div>
+        </form>
+        
+        <!-- seccion de resultados -->
+        <section id="resultados" class="resultados">
+            <h2>Resultados</h2>
+            <!-- resultado del capital -->
+            <div class="resultado-item">
+                <label>Capital Inicial:</label>
+                <span id="capitalMostrado">$0.00</span>
+            </div>
+            <!-- resultado de la ganancia -->
+            <div class="resultado-item">
+                <label>Ganancia (2% mensual):</label>
+                <span id="gananciaMostrada">$0.00</span>
+            </div>
+            <!-- resultado del total -->
+            <div class="resultado-item">
+                <label>Total Final:</label>
+                <span id="totalMostrado">$0.00</span>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Script vinculado al archivo JS -->
+    <script src="JS/Ejercicio1.js"></script>
+</body>
+</html>

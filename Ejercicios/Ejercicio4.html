@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador de Calificación Final</title>
+    <link rel="stylesheet" href="css/style4.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculador de Calificación Final</h1>
+        
+        <form id="formulario" name="formulario">
+            
+            <div class="form-group">
+                <label for="parcial1">Parcial 1 (55%):</label>
+                <!-- input para calificación del parcial 1 -->
+                <input type="text" id="parcial1" name="parcial1" placeholder="0-10">
+            </div>
+            
+            <div class="form-group">
+                <label for="parcial2">Parcial 2 (55%):</label>
+                <!-- input para calificación del parcial 2 -->
+                <input type="text" id="parcial2" name="parcial2" placeholder="0-10">
+            </div>
+            
+            <div class="form-group">
+                <label for="parcial3">Parcial 3 (55%):</label>
+                <!-- input para calificación del parcial 3 -->
+                <input type="text" id="parcial3" name="parcial3" placeholder="0-10">
+            </div>
+            
+            <div class="form-group">
+                <label for="examenFinal">Examen Final (30%):</label>
+                <!-- input para calificación del examen final -->
+                <input type="text" id="examenFinal" name="examenFinal" placeholder="0-10">
+            </div>
+            
+            <div class="form-group">
+                <label for="trabajoFinal">Trabajo Final (15%):</label>
+                <!-- input para calificación del trabajo final -->
+                <input type="text" id="trabajoFinal" name="trabajoFinal" placeholder="0-10">
+            </div>
+            
+            <div class="botones">
+                <!-- boton para calcular calificación final -->
+                <button type="button" class="btn btn-calcular" onclick="calcular(document.formulario)">Calcular</button>
+                <button type="button" class="btn btn-limpiar" onclick="limpiar(document.formulario)">Limpiar</button>
+            </div>
+        </form>
+        
+        <!-- seccion donde se muestra la calificación final -->
+        <section id="resultados" class="resultados">
+            <h2>Resultado</h2>
+            
+            <div class="resultado-item">
+                <label>Calificación Final:</label>
+                <!-- span para mostrar la calificación final calculada -->
+                <span id="calificacionFinalMostrada">0.00</span>
+            </div>
+        </section>
+    </div>
+    
+    <script src="JS/Ejercicio4.js"></script>
+</body>
+</html>

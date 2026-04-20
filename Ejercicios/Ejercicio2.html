@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador de Sueldo Vendedor</title>
+    <!-- enlace a css -->
+    <link rel="stylesheet" href="css/style2.css">
+</head>
+<body>
+    <div class="container">
+        <!-- título principal -->
+        <h1>Calculador de Sueldo Vendedor</h1>
+        
+        <!-- formulario con atributo name para pasarlo a js -->
+        <form id="formulario" name="formulario">
+            
+            <!-- campo sueldo base -->
+            <div class="form-group">
+                <label for="sueldoBase">Sueldo Base:</label>
+                <input type="text" id="sueldoBase" name="sueldoBase" placeholder="Ingrese sueldo base">
+            </div>
+            
+            <!-- campo venta 1 -->
+            <div class="form-group"     >
+                <label for="venta1">Venta 1:</label>
+                <input type="text" id="venta1" name="venta1" placeholder="Ingrese venta 1">
+            </div>
+            
+            <!-- campo venta 2 -->
+            <div class="form-group">
+                <label for="venta2">Venta 2:</label>
+                <input type="text" id="venta2" name="venta2" placeholder="Ingrese venta 2">
+            </div>
+            
+            <!-- campo venta 3 -->
+            <div class="form-group">
+                <label for="venta3">Venta 3:</label>
+                <input type="text" id="venta3" name="venta3" placeholder="Ingrese venta 3">
+            </div>
+            
+            <!-- botones -->
+            <div class="botones">
+                <!-- boton calcular -->
+                <button type="button" class="btn btn-calcular" onclick="calcular(document.formulario)">Calcular</button>
+                <!-- boton limpiar -->
+                <button type="button" class="btn btn-limpiar" onclick="limpiar(document.formulario)">Limpiar</button>
+            </div>
+        </form>
+        
+        <!-- seccion de resultados -->
+        <section id="resultados" class="resultados">
+            <h2>Resultados</h2>
+            
+            <!-- resultado sueldo base -->
+            <div class="resultado-item">
+                <label>Sueldo Base:</label>
+                <span id="sueldoMostrado">$0.00</span>
+            </div>
+            
+            <!-- resultado total de ventas -->
+            <div class="resultado-item">
+                <label>Total Ventas:</label>
+                <span id="ventasMostrado">$0.00</span>
+            </div>
+            
+            <!-- resultado comisión -->
+            <div class="resultado-item">
+                <label>Comisión (5%):</label>
+                <span id="comisionMostrado">$0.00</span>
+            </div>
+            
+            <!-- resultado sueldo final -->
+            <div class="resultado-item">
+                <label>Sueldo Final:</label>
+                <span id="sueldoFinalMostrado">$0.00</span>
+            </div>
+        </section>
+    </div>
+    
+    <!-- enlace a js -->
+    <script src="JS/Ejercicio2.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador de Descuento</title>
+    <link rel="stylesheet" href="css/style3.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculador de Descuento 15%</h1>
+        
+        <form id="formulario" name="formulario">
+            
+            <div class="form-group">
+                <label for="totalCompra">Total Compra:</label>
+                <!-- input para el total de compra -->
+                <input type="text" id="totalCompra" name="totalCompra" placeholder="Ingrese total de compra">
+            </div>
+            
+            <div class="botones">
+                <!-- boton para calcular descuento -->
+                <button type="button" class="btn btn-calcular" onclick="calcular(document.formulario)">Calcular</button>
+                <button type="button" class="btn btn-limpiar" onclick="limpiar(document.formulario)">Limpiar</button>
+            </div>
+        </form>
+        
+        <!-- seccion donde se muestran los resultados -->
+        <section id="resultados" class="resultados">
+            <h2>Resultados</h2>
+            
+            <div class="resultado-item">
+                <label>Subtotal:</label>
+                <!-- span para mostrar el subtotal -->
+                <span id="subtotalMostrado">$0.00</span>
+            </div>
+            
+            <div class="resultado-item">
+                <label>Descuento (15%):</label>
+                <!-- span para mostrar el descuento calculado -->
+                <span id="descuentoMostrado">$0.00</span>
+            </div>
+            
+            <div class="resultado-item">
+                <label>Total Final:</label>
+                <!-- span para mostrar el total final -->
+                <span id="totalFinalMostrado">$0.00</span>
+            </div>
+        </section>
+    </div>
+    
+    <script src="JS/Ejercicio3.js"></script>
+</body>
+</html>

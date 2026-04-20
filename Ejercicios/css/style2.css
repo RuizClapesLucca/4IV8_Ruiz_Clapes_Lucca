@@ -1,0 +1,95 @@
+/* estilos del body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+/* contenedor centrado */
+.container {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* título principal */
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* título de resultados */
+h2 {
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* agrupar inputs */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* estilos de etiquetas */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* estilos de inputs */
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #999;
+    font-size: 14px;
+}
+
+/* estilos de botones */
+.botones {
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: 1px solid #999;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* efecto al pasar mouse */
+.btn:hover {
+    background-color: #ccc;
+}
+
+/* estilos de resultados */
+.resultados {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* cada resultado */
+.resultado-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* etiqueta de resultado */
+.resultado-item label {
+    display: inline;
+    margin: 0;
+}
+
+/* valor mostrado */
+.resultado-item span {
+    float: right;
+    font-weight: bold;
+}
