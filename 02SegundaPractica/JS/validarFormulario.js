@@ -1,41 +1,32 @@
-function validarFormulario(Formulario){
-    //Vamos a crear una funcion para validar un nombre minimo de caracteres en el formulario
-    if(Formulario.Nombre.value.length <= 3){
-        alert("Porfavor ingresa un nombre de minimo 3 caracteres");
+function validarFormulario(Formulario) {
+    var nombre = Formulario.Nombre.value.trim();
+    if (nombre.length <= 3) {
+        alert("Por favor ingresa un nombre de al menos 4 caracteres.");
         Formulario.Nombre.focus();
         return false;
     }
-    var abcOK = "QWERTYUIOPASDFGHJKLÑZXCVBNM"+ "qwertyuiopasdfghjklñzxcvbnm";
-    var checkString = Formulario.Nombre.value;
-    var allValid = true;
-    //Tenemos que ir comprobando y recorriendo la cade caracter por caracter
-    for(var i=0; i<checkString.length; i++){
-        //Necesito la cadena pasarla a caracteres
-        var caracteres= checkString.charAt(i);
-        for(var j=0; j<abcOK.length; j++){
-            if(caracteres==abcOK.charAt(j)){
-                break;
-            }
-        }
-        if(j==abcOK.length){
-            allValid=false;
-            break;
-        }
-    }
-    if(!allValid){
-        alert("Porfavor ingresa solo letras en el campo de nombre");
+
+    var nombreValido = /^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$/;
+    if (!nombreValido.test(nombre)) {
+        alert("Por favor ingresa solo letras en el campo Nombre.");
         Formulario.Nombre.focus();
         return false;
     }
-    //algo.algo@algo.algo 
-    var correoelctronico = /^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;
-    var txt = Formulario.email.value;
-    alert("Email" + (correoelectronico.test(txt)?"":" no") + " valido");
-    // Validación de edad
-    var edad = parseInt(Formulario.edad.value);
-    if(isNaN(edad) || edad < 15 || edad > 100){
-        alert("La edad debe ser un número entre 15 y 100 años");
+
+    var edad = parseInt(Formulario.edad.value, 10);
+    if (isNaN(edad) || edad < 15 || edad > 100) {
+        alert("La edad debe ser un número entre 15 y 100 años.");
         Formulario.edad.focus();
         return false;
     }
-}   
+
+    var correoElectronico = /^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;
+    var email = Formulario.gmail.value.trim();
+    if (!correoElectronico.test(email)) {
+        alert("Por favor ingresa un correo electrónico válido.");
+        Formulario.gmail.focus();
+        return false;
+    }
+
+    return true;
+}
