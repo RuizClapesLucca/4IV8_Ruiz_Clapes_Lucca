@@ -31,4 +31,11 @@ function validarFormulario(Formulario){
     var correoelctronico = /^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;
     var txt = Formulario.email.value;
     alert("Email" + (correoelectronico.test(txt)?"":" no") + " valido");
+    // Validación de edad
+    var edad = parseInt(Formulario.edad.value);
+    if(isNaN(edad) || edad < 15 || edad > 100){
+        alert("La edad debe ser un número entre 15 y 100 años");
+        Formulario.edad.focus();
+        return false;
+    }
 }   

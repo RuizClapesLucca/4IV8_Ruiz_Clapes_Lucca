@@ -14,7 +14,7 @@
             Esque vamos a tener que por defecto de todos los formularios utilizaran el metodo GET y le segundo metodo mas utilizado sera es POST, aunque existen otros metodos que se encarga del intercambio de informacion
             Get este metdo envia por medio de la url toda la informacion del formulario a traves del navegador su funcion principal es obtener los datos del servicio pero es el metodo mas vulnerable de todos ya que se puede generar inyecciones de codigo
             POST este metodo se encarga de registrar una nueva entrada al sistema tambien utiliza la url como envio por defecto pero su facultad es poder ocultarla esto significa que los datos no son visibles para el usuario comun en el navegador.
-            <form name="Formulario" method="get" id="Formulario" onsubmit="return validarFormulario(this);">
+            <form action="formulario.html" method="POST" id="Formulario" onsubmit="return validarFormulario(this);">
                 <label for="Nombre">
                 Nombre:
                 </label>

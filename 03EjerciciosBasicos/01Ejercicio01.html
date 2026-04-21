@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer ejercicio de 10</title>
+</head>
+<body>
+    <div class="Ejercicio1">
+        <form method="post" id="formularioejerc1" action="">
+            <label for="">
+                formulario para calcular una inversion al x% de interes anual.
+            </label>
+            <div class="container-table">
+                <table class="table">
+                    <tr>
+                        <td>
+                            introduce la cantidad que deseas invertir por todo un año
+                        </td>
+                        <td>
+                            <input type="text" name="cantidad" id="cantidadi" onkeypress="return validar(e)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <input type="button" value="Calcular interes"name="enviar" onclick="interes()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            su saldo es:
+                        </td>
+                        <td>
+                            <input type="text" name="sueldoi" id="sueldoi" readonly="readonly">
+                        </td>
+                        <td>
+                            <input type="button" value="Borrar datos" name="borrar" onclick="borrar()">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+<script src="interes.js"></script>
+</body>
+</html>
