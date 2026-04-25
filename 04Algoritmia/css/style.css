@@ -1,0 +1,77 @@
+body {
+    font-family: sans-serif;
+    background-color: #e0e0e0; 
+    margin: 10px;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.problema-container {
+    background-color: white;
+    border: 2px solid black; 
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.problema-titulo {
+    color: black;
+    text-decoration: underline; 
+    margin-top: 0;
+}
+
+
+.problema-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid gray;
+}
+
+.problema-button {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.problema-button:hover {
+    background-color: darkblue; 
+}
+.problema-output {
+    background-color: #f0f0f0;
+    border: 1px solid black;
+    padding: 10px;
+    font-family: monospace;
+    margin-top: 10px;
+}
+
+
+.tablas {
+    margin-top: 20px;
+}
+
+.problema-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-bottom: 15px;
+}
+
+.problema-table th, 
+.problema-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.problema-table th {
+    background-color: #cccccc; 
+}
+
+
+
