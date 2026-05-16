@@ -1,46 +1,11 @@
-const express = require('express');
-const path = require('path');
-const mysql = require('mysql2');
-
-const PORT = process.env.PORT || 3000;
-const app = express();
-
-// middleware
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
-
-// conexión a la base de datos
-const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'Elpro109@',
-    database: 'pnt_practica1',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
-});
-const db = pool.promise();
-
-// log de peticiones
-app.use((req, res, next) => {
-    console.log(`[${new Date().toLocaleTimeString()}] ${req.method} ${req.path}`);
-    next();
-});
-
-// ruta principal
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// aquí irían tus rutas API GET/POST/PUT/DELETE
-// por ejemplo:
-// app.get('/api/items', async (req, res) => { ... });
-
-app.use((req, res) => {
-    res.status(404).send('Archivo no encontrado');
-});
-
-app.listen(PORT, () => {
-    console.log('Servidor inicializado en el puerto: ' + PORT);
-    console.log('Para salir presiona ctrl + c');
-});
+const express = require('express'); // importar Express para crear el servidor y manejar rutas
+const mysql = require('mysql2'); // importar mysql2 para conectar con la base de datos MySQL
+const path = require('path'); // importar path para construir rutas de archivos de forma segura
+const app = express(); // crear la aplicación de Express
+const PORT = process.env.PORT || 3000; // puerto donde escuchará el servidor
+const db = mysql.createPool({host:'localhost',user:'root',password:'Elpro109@',database:'pnt_practica1',waitForConnections:true,connectionLimit:10,queueLimit:0}).promise(); // crear pool de conexiones MySQL y usar promesas
+app.use(express.json()); // middleware para parsear JSON en el body de las solicitudes
+app.use(express.static(path.join(__dirname,'public'))); // servir archivos estáticos desde la carpeta public
+app.get('/api/test',(req,res)=>res.json({ok:true})); // ruta GET de prueba que responde JSON simple
+app.post('/api/test',async(req,res)=>{const data=req.body;res.json({received:data})}); // ruta POST de prueba que recibe JSON y lo devuelve
+app.listen(PORT,()=>console.log(`Servidor inicializado en el puerto ${PORT}`)); // iniciar el servidor y mostrar el puerto en consola
