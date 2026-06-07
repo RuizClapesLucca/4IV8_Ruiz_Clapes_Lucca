@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Overwatch</title>
+    <link rel="stylesheet" href="./css/stlye.css">
+    </head>
+<body>
+
+    <header>
+        <h1>Administrador de Overwatch</h1>
+        <p>Práctica — Express + CORS + Relaciones entre Tablas (Jugadores / Héroes / Partidas)</p>
+        <nav class="tabs">
+            <button class="tab active" onclick="cambiarSeccion('players')">Jugadores</button>
+            <button class="tab" onclick="cambiarSeccion('heroes')">Héroes</button>
+            <button class="tab" onclick="cambiarSeccion('matches')">Partidas</button>
+            <button class="tab" onclick="cambiarSeccion('tournaments')">Torneos</button>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="info-api">
+            <h3>Estado de la API</h3>
+            <div class="api-status">
+                <span id="api-metodo" class="badge">-</span>
+                <span id="api-url" class="api-url">-</span>
+                <span id="api-codigo" class="badge badge-neutral">-</span>
+            </div>
+        </section>
+
+        <div id="seccion-players" class="seccion">
+
+            <section class="formulario-section">
+                <h2 id="form-titulo-player">Agregar Jugador</h2>
+                <form id="form-player" novalidate>
+                    <input type="hidden" id="player-id">
+                    <div class="campos-grid">
+                        <div class="campo">
+                            <label for="player-nombre">Nombre:</label>
+                            <input type="text" id="player-nombre" placeholder="Ej: Ana" maxlength="100" required>
+                            <span class="error" id="error-player-nombre"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="player-battletag">BattleTag:</label>
+                            <input type="text" id="player-battletag" placeholder="Ej: Ana#1234" maxlength="150" required>
+                            <span class="error" id="error-player-battletag"></span>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-player">Guardar</button>
+                        <button type="button" id="btn-cancelar-player" class="btn-secundario" style="display:none;">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tabla-section">
+                <h2>Jugadores <span id="contador-players" class="badge badge-neutral"></span></h2>
+                <p id="carga-players">Cargando...</p>
+                <table id="tabla-players" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>BattleTag</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-players"></tbody>
+                </table>
+            </section>
+        </div>
+
+        <div id="seccion-heroes" class="seccion" style="display:none;">
+
+            <section class="formulario-section">
+                <h2 id="form-titulo-hero">Agregar Héroe</h2>
+                <form id="form-hero" novalidate>
+                    <input type="hidden" id="hero-id">
+                    <div class="campos-grid">
+                        <div class="campo">
+                            <label for="hero-nombre">Nombre:</label>
+                            <input type="text" id="hero-nombre" placeholder="Ej: Tracer" maxlength="150" required>
+                            <span class="error" id="error-hero-nombre"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="hero-role">Rol:</label>
+                            <input type="text" id="hero-role" placeholder="Ej: DPS / Tank / Support" maxlength="100" required>
+                            <span class="error" id="error-hero-role"></span>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-hero">Guardar</button>
+                        <button type="button" id="btn-cancelar-hero" class="btn-secundario" style="display:none;">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tabla-section">
+                <h2>Héroes <span id="contador-heroes" class="badge badge-neutral"></span></h2>
+                <p id="carga-heroes">Cargando...</p>
+                <table id="tabla-heroes" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Role</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-heroes"></tbody>
+                </table>
+            </section>
+        </div>
+
+        <div id="seccion-matches" class="seccion" style="display:none;">
+
+            <section class="formulario-section">
+                <h2>Registrar Partida</h2>
+                <form id="form-match" novalidate>
+                    <div class="campos-grid campos-grid-3">
+                        <div class="campo">
+                            <label for="match-player">Jugador:</label>
+                            <select id="match-player" required>
+                                <option value="">-- Seleccionar --</option>
+                            </select>
+                            <span class="error" id="error-match-player"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="match-hero">Héroe:</label>
+                            <select id="match-hero" required>
+                                <option value="">-- Seleccionar --</option>
+                            </select>
+                            <span class="error" id="error-match-hero"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="match-kills">Kills:</label>
+                            <input type="number" id="match-kills" value="0" min="0" step="1" required>
+                            <span class="error" id="error-match-kills"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="match-deaths">Deaths:</label>
+                            <input type="number" id="match-deaths" value="0" min="0" step="1" required>
+                            <span class="error" id="error-match-deaths"></span>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="btn-registrar-match">Registrar Partida</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tabla-section">
+                <h2>Historial de Partidas <span id="contador-matches" class="badge badge-neutral"></span></h2>
+                <p id="carga-matches">Cargando...</p>
+                <table id="tabla-matches" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Jugador</th>
+                            <th>Héroe</th>
+                            <th>Kills</th>
+                            <th>Deaths</th>
+                            <th>Puntuación</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-matches"></tbody>
+                </table>
+            </section>
+        </div>
+
+        <div id="seccion-tournaments" class="seccion" style="display:none;">
+
+            <section class="formulario-section">
+                <h2 id="form-titulo-tournament">Agregar Torneo</h2>
+                <form id="form-tournament" novalidate>
+                    <input type="hidden" id="tournament-id">
+                    <div class="campos-grid campos-grid-2">
+                        <div class="campo">
+                            <label for="tournament-nombre">Nombre:</label>
+                            <input type="text" id="tournament-nombre" placeholder="Ej: Summer Cup" maxlength="200" required>
+                            <span class="error" id="error-tournament-nombre"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="tournament-fecha">Fecha:</label>
+                            <input type="date" id="tournament-fecha" required>
+                            <span class="error" id="error-tournament-fecha"></span>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-tournament">Guardar</button>
+                        <button type="button" id="btn-cancelar-tournament" class="btn-secundario" style="display:none;">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tabla-section">
+                <h2>Torneos <span id="contador-tournaments" class="badge badge-neutral"></span></h2>
+                <p id="carga-tournaments">Cargando...</p>
+                <table id="tabla-tournaments" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-tournaments"></tbody>
+                </table>
+            </section>
+        </div>
+
+        <div id="notificacion" class="notificacion" style="display:none;"></div>
+
+    </main>
+
+    <footer>
+        <p>Overwatch Manager — API: Players/Heroes/Matches</p>
+    </footer>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
