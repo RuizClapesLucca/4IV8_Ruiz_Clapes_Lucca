@@ -1,3 +1,5 @@
+// Ocupo esto para conectarme a la BD, consta para que las consultas funcionen.
+// Nota de estudiante: aquí están las credenciales en claro, yo no sé aún cómo ocultarlas.
 const mysql = require('mysql2');
 
 const pool = mysql.createPool({

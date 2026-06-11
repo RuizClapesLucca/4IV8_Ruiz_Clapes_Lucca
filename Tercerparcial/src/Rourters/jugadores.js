@@ -1,7 +1,10 @@
+// Ocupo este router para manejar jugadores. Con esto consta para CRUD de players.
+
 const express = require('express');
 const router = express.Router();
 const db = require('../DB/database');
 
+// Ocupo esta validación antes de guardar/editar, sirve para evitar basura.
 function validarJugador(datos){
   const errores = [];
   if(!datos.nombre || typeof datos.nombre !== 'string' || datos.nombre.trim().length < 2) errores.push('El nombre es obligatorio y debe tener al menos 2 caracteres');
@@ -9,6 +12,7 @@ function validarJugador(datos){
   return errores;
 }
 
+// Listar jugadores — ocupo esto para llenar la tabla en el front
 router.get('/', async (req, res) => {
   try{
     const [rows] = await db.execute('SELECT id, nombre, battletag, created_at, updated_at FROM players ORDER BY id ASC');
@@ -19,6 +23,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Obtener jugador por ID — ocupo esto para editar
 router.get('/:id', async (req, res) => {
   try{
     const { id } = req.params;
@@ -31,6 +36,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Crear jugador — ocupo esto cuando el front manda POST
 router.post('/', async (req, res) => {
   try{
     const errores = validarJugador(req.body);
@@ -46,6 +52,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Actualizar jugador — ocupo esto para el PUT desde el front
 router.put('/:id', async (req, res) => {
   try{
     const { id } = req.params;
@@ -65,6 +72,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// Eliminar jugador — ocupo esto para borrar y que no quede basura
 router.delete('/:id', async (req, res) => {
   try{
     const { id } = req.params;

@@ -1,10 +1,13 @@
 
+// Ocupo este archivo para que la página hable con la API.
+
 const apiMetodo = document.getElementById('api-metodo');
 const apiUrl = document.getElementById('api-url');
 const apiCodigo = document.getElementById('api-codigo');
 const notificacionDiv = document.getElementById('notificacion');
 
 async function fetchAPI(url, opciones = {}) {
+    // Ocupo esta función para hablar con la API, consta para que sepan qué método uso.
     const method = opciones.method || 'GET';
     apiMetodo.textContent = method;
     apiMetodo.className = `badge badge-${method.toLowerCase()}`;
@@ -24,10 +27,11 @@ async function fetchAPI(url, opciones = {}) {
 }
 
 function mostrarNotificacion(mensaje, tipo){ notificacionDiv.textContent = mensaje; notificacionDiv.className = `notificacion ${tipo}`; notificacionDiv.style.display='block'; setTimeout(()=>notificacionDiv.style.display='none',3000); }
+// Ocupo estas helpers para que no se rompa la UI con texto raro.
 function escapeHtml(texto){ const d=document.createElement('div'); d.textContent=texto; return d.innerHTML; }
 function formatearFechaHora(fechaISO){ if(!fechaISO) return '-'; return new Date(fechaISO).toLocaleString(); }
 
-// Players module
+// Players module — ocupo esta parte para manejar jugadores (listar/crear/editar/eliminar)
 const formPlayer = document.getElementById('form-player');
 const inputPlayerId = document.getElementById('player-id');
 const inputPlayerNombre = document.getElementById('player-nombre');
@@ -58,7 +62,7 @@ window.confirmarEliminarPlayer = function(id,nombre){ if(confirm(`¿Eliminar a "
 async function eliminarPlayer(id){ try{ await fetchAPI(`/api/jugadores/${id}`, { method:'DELETE' }); mostrarNotificacion('Jugador eliminado','exito'); cargarPlayers(); cargarSelectPlayers(); cargarMatches(); }catch(err){ mostrarNotificacion(err.message,'error'); } }
 document.getElementById('btn-cancelar-player').addEventListener('click', limpiarFormPlayer);
 
-// Heroes module
+// Heroes module — ocupo esta parte para manejar héroes (igual que jugadores)
 const formHero = document.getElementById('form-hero');
 const inputHeroId = document.getElementById('hero-id');
 const inputHeroNombre = document.getElementById('hero-nombre');
@@ -80,7 +84,7 @@ window.confirmarEliminarHero = function(id,nombre){ if(confirm(`¿Eliminar "${no
 async function eliminarHero(id){ try{ await fetchAPI(`/api/heroes/${id}`, { method:'DELETE' }); mostrarNotificacion('Héroe eliminado','exito'); cargarHeroes(); cargarSelectHeroes(); cargarMatches(); }catch(err){ mostrarNotificacion(err.message,'error'); } }
 document.getElementById('btn-cancelar-hero').addEventListener('click', limpiarFormHero);
 
-// Matches module
+// Matches module — ocupo esta parte para registrar partidas y ver historial
 const formMatch = document.getElementById('form-match');
 const selectMatchPlayer = document.getElementById('match-player');
 const selectMatchHero = document.getElementById('match-hero');
@@ -100,10 +104,10 @@ formMatch.addEventListener('submit', async e=>{ e.preventDefault(); const player
 
 window.eliminarMatch = async function(id){ if(!confirm('¿Eliminar partida?')) return; try{ await fetchAPI(`/api/partidas/${id}`, { method:'DELETE' }); mostrarNotificacion('Partida eliminada','exito'); cargarMatches(); }catch(err){ mostrarNotificacion(err.message,'error'); } }
 
-// Navigation
+// Navigation — ocupo esto para cambiar entre pestañas
 function cambiarSeccion(sec){ document.querySelectorAll('.seccion').forEach(s=>s.style.display='none'); document.getElementById(`seccion-${sec}`).style.display='block'; document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active')); document.querySelector(`.tab[onclick="cambiarSeccion('${sec}')"]`).classList.add('active'); }
 
-// Init
+// Init — al cargar la página ocupo estas funciones para traer datos
 
 // Tournaments module
 const formTournament = document.getElementById('form-tournament');
