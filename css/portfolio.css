@@ -1,0 +1,46 @@
+/* Colores inspirados en el Instituto Politécnico Nacional (tonos rojos/negro) */
+:root{
+    --primary:#8B0000; /* rojo oscuro */
+    --accent:#FFD700;  /* dorado para contraste */
+    --dark:#111111;
+    --muted:#f4f4f4;
+}
+
+*{box-sizing:border-box}
+body{
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    margin:0;
+    background:var(--muted);
+    color:var(--dark);
+    line-height:1.45;
+}
+.site-header{
+    background:linear-gradient(90deg,var(--primary),#6e0000);
+    color:white;
+    padding:1.25rem 1rem;
+    text-align:center;
+}
+.site-header h1{margin:0; font-size:1.6rem}
+.site-header .subtitle{margin:0.25rem 0 0;font-size:0.95rem;opacity:0.95}
+
+main{max-width:980px;margin:1.25rem auto;padding:0 1rem}
+.caratula{background:white;padding:1rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:1rem}
+.caratula h2{color:var(--primary)}
+.caratula ul{margin:0.5rem 0 0 1.25rem}
+
+.menu-practicas{background:white;padding:1rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:1rem}
+.menu-practicas ul{list-style:none;padding:0;margin:0}
+.menu-practicas li{padding:0.45rem 0;border-bottom:1px solid #eee}
+.menu-practicas li:last-child{border-bottom:0}
+.menu-practicas a{color:var(--primary);text-decoration:none;font-weight:600}
+.menu-practicas a:hover{color:var(--accent)}
+
+.enlaces-externos{background:white;padding:1rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.enlaces-externos a{color:var(--primary)}
+.nota{font-size:0.9rem;color:#666;margin-top:0.5rem}
+
+.site-footer{text-align:center;padding:1rem;margin-top:1rem;color:#333}
+
+@media (min-width:760px){
+    .caratula,.menu-practicas,.enlaces-externos{display:block}
+}
