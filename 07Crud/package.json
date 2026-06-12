@@ -1,0 +1,21 @@
+{
+  "name": "07crud",
+  "version": "1.0.0",
+  "description": "Ejemplo de crud con vainillaJS",
+  "keywords": [
+    "crud",
+    "mysql",
+    "nodejs"
+  ],
+  "license": "ISC",
+  "author": "Ruiz Clapes Lucca",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mysql2": "^3.22.3"
+  }
+}
