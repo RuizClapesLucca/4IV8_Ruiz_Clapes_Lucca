@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+:root {
+    --pale:#D6DAE2;
+    --dark:#1D2D44;
+    --mid:#3E5C76;
+    --soft:#748CAB;
+    --cream:#F0EBD8;
+}
+
+*{box-sizing:border-box}
+body{
+    margin:0;
+    padding:20px;
+    font-family:'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background:var(--cream);
+    color:var(--dark);
+    -webkit-font-smoothing:antialiased;
+}
+
+.container, main { max-width:1100px; margin:0 auto; }
+h1,h2,h3,h4{color:var(--dark); margin:0 0 10px 0}
+h1{font-weight:800; font-size:2.2rem}
+h2{font-weight:700}
+
+a{color:var(--mid); text-decoration:none}
+ul{padding-left:1.2rem}
+
+button, input[type="button"], input[type="submit"], .btn{
+    background:var(--mid);
+    color:#fff;
+    border:0;
+    padding:8px 12px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+input, textarea, select{
+    border:1px solid var(--soft);
+    padding:6px 8px;
+    border-radius:4px;
+    background:transparent;
+    color:var(--dark);
+}
+
+table{border-collapse:collapse; width:100%}
+th,td{border:1px solid rgba(0,0,0,0.06); padding:8px; text-align:left}
+
+/* Small helpers to make older pages readable */
+.Ejercicio1, .formulario-section, .table-section{background:var(--pale); padding:12px; border-radius:6px}
+
+.nav{background:var(--pale); padding:12px; border-right:6px solid var(--soft)}
+
+/* End of global styles */
